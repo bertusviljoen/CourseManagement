@@ -1,6 +1,9 @@
 using Application.Interfaces;
+using CourseManagement.Application.Common.Interfaces;
 using Infrastructure.Data;
+using Infrastructure.Data.Interceptors;
 using Infrastructure.Data.Repositories;
+using Infrastructure.Services;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -12,23 +15,19 @@ public static class ServiceExtensions
 {
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddScoped<DispatchDomainEventsInterceptor>();
+        services.AddScoped<AuditableEntityInterceptor>();
+
+        services.AddSingleton(TimeProvider.System);
+        services.AddScoped<IUser, CurrentUser>();
+
         services.AddDbContext<CourseManagementDbContext>((sp, options) =>
         {
-            var mediator = sp.GetService<IMediator>();
-            if (mediator == null)
-            {
-                throw new InvalidOperationException(
-                    "IMediator not found. Please ensure you call AddApplicationServices() before AddInfrastructureServices()");
-            }
-
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
-        });
-
-        services.AddScoped<CourseManagementDbContext>((sp) =>
-        {
-            var options = sp.GetRequiredService<DbContextOptions<CourseManagementDbContext>>();
-            var mediator = sp.GetRequiredService<IMediator>();
-            return new CourseManagementDbContext(options, mediator);
+            options.AddInterceptors(
+                sp.GetRequiredService<DispatchDomainEventsInterceptor>(),
+                sp.GetRequiredService<AuditableEntityInterceptor>()
+            );
         });
 
         services.AddScoped<ICourseRepository, CourseRepository>();

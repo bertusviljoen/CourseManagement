@@ -1,8 +1,6 @@
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using Moq;
 
 namespace Infrastructure.Data;
 
@@ -19,9 +17,6 @@ public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<CourseMana
         var optionsBuilder = new DbContextOptionsBuilder<CourseManagementDbContext>();
         optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
 
-        // Create a mock IMediator since this is only used for design-time operations
-        var mediator = new Mock<IMediator>().Object;
-
-        return new CourseManagementDbContext(optionsBuilder.Options, mediator);
+        return new CourseManagementDbContext(optionsBuilder.Options);
     }
 }
