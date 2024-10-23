@@ -3,13 +3,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data;
 
-public class CourseManagementDbContext : DbContext
+public class CourseManagementDbContext(DbContextOptions<CourseManagementDbContext> options) : DbContext(options)
 {
-    public CourseManagementDbContext(DbContextOptions<CourseManagementDbContext> options)
-        : base(options)
-    {
-    }
-
     public DbSet<Course> Courses { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
