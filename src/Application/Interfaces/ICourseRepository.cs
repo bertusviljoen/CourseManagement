@@ -1,4 +1,4 @@
-using Domain.Entities;
+using CourseManagement.Domain.Entities;
 
 namespace Application.Interfaces;
 

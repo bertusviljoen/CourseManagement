@@ -1,6 +1,5 @@
 using Application.Interfaces;
-using Domain.Entities;
-using Microsoft.EntityFrameworkCore;
+using CourseManagement.Domain.Entities;
 
 namespace Infrastructure.Data.Repositories;
 

@@ -1,4 +1,4 @@
-using Domain.Entities;
+using CourseManagement.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -30,10 +30,12 @@ public class CourseConfiguration : IEntityTypeConfiguration<Course>
             .IsRequired()
             .HasDefaultValue(true);
 
-        builder.Property(c => c.CreatedAt)
+        builder.Property(c => c.CreatedUtc)
             .IsRequired()
             .HasDefaultValueSql("GETUTCDATE()");
 
-        builder.Property(c => c.UpdatedAt);
+        builder.Property(c => c.LastModifiedUtc)
+            .IsRequired();
+
     }
 }
