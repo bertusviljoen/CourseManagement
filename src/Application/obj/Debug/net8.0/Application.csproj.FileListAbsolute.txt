@@ -1,0 +1,11 @@
+X:\ASource\Cline\CourseManagement\src\Application\bin\Debug\net8.0\Application.deps.json
+X:\ASource\Cline\CourseManagement\src\Application\bin\Debug\net8.0\Application.dll
+X:\ASource\Cline\CourseManagement\src\Application\bin\Debug\net8.0\Application.pdb
+X:\ASource\Cline\CourseManagement\src\Application\obj\Debug\net8.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+X:\ASource\Cline\CourseManagement\src\Application\obj\Debug\net8.0\Application.AssemblyInfoInputs.cache
+X:\ASource\Cline\CourseManagement\src\Application\obj\Debug\net8.0\Application.AssemblyInfo.cs
+X:\ASource\Cline\CourseManagement\src\Application\obj\Debug\net8.0\Application.csproj.CoreCompileInputs.cache
+X:\ASource\Cline\CourseManagement\src\Application\obj\Debug\net8.0\Application.dll
+X:\ASource\Cline\CourseManagement\src\Application\obj\Debug\net8.0\refint\Application.dll
+X:\ASource\Cline\CourseManagement\src\Application\obj\Debug\net8.0\Application.pdb
+X:\ASource\Cline\CourseManagement\src\Application\obj\Debug\net8.0\ref\Application.dll
