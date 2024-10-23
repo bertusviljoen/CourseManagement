@@ -1,4 +1,6 @@
+using Application.Interfaces;
 using Infrastructure.Data;
+using Infrastructure.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +13,8 @@ public static class ServiceExtensions
     {
         services.AddDbContext<CourseManagementDbContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+        services.AddScoped<ICourseRepository, CourseRepository>();
 
         return services;
     }
